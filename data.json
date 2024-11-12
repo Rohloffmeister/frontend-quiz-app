@@ -54,7 +54,7 @@
                     ],
                     "answer": "<a>"
                 },
-                {
+                { 
                     "question": "Which tag is used to display images in HTML?",
                     "options": [
                         "<img>",
