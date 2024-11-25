@@ -5,27 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+  <script src="script.js" defer></script>
   <title>Frontend Mentor | Frontend quiz app</title>
 </head>
 <body>
-  
   <!-- Quiz menu start -->
-  <section class="quiz-menu ">
-    <div class="content">
-  Welcome to the Frontend Quiz!
-  Pick a subject to get started.
+   <head>
+    <div class="quiz title"></div>
+    <div class="color-mode">
+    <img src="assets/images/icon-sun-dark.svg">
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider round"></span>
+    </label>
+    <img src="assets/images/icon-moon-dark.svg">
+    </div>
+   </head>
+   <main>
+  <section class="quiz-menu" id="main-menu">
+    <div class="text heading-L-Regular">
+    
+  <div>Welcome to the <br><a class="heading-L-Bold">Frontend Quiz!</a></div>
 
-  <button id="SELECT-HTML">HTML</button>
-  <button id="SELECT-CSS">CSS</button>
-  <button id="SELECT-JS">JavaScript</button>
-  <button id="SELECT-ACCESSIBILITY">Accessibility</button> 
+  <div class="body-S gray" >Pick a subject to get started.</div>
+    </div>
+    <div class="buttons" id="categoryButtons">
+  <button id="SELECT-HTML" class="categoryButton"><img class="html" src="assets/images/icon-html.svg">HTML</button>
+  <button id="SELECT-CSS" class="categoryButton"><img class="css" src="assets/images/icon-css.svg">CSS</button>
+  <button id="SELECT-JS" class="categoryButton"><img class="javascript" src="assets/images/icon-js.svg">JavaScript</button>
+  <button id="SELECT-ACCESSIBILITY" class="categoryButton"><img class="accessibility" src="assets/images/icon-accessibility.svg">Accessibility</button> 
     </div>
   </section>
   <!-- Quiz menu end -->
 
   <!-- Quiz question start -->
-  <section class="quiz notactive">
+  <section class="quiz notactive" id="quiz-menu">
   Question <!-- number --> of 10
 
   <button class="answer">A</button>
@@ -45,6 +59,6 @@
   <!-- score --> out of 10
   </section>
   <!-- Quiz completed end -->
-
+   </main>
 </body>
 </html>
