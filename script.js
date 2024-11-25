@@ -1,12 +1,28 @@
 const categoryButtons = document.getElementById("categoryButtons").getElementsByTagName("button");
 const mainMenu = document.getElementById("main-menu");
 const quizMenu = document.getElementById("quiz-menu");
+let quizData = null;
 
 
-console.log(categoryButtons);
+fetch("./data.json").
+then((response) => {
+  if (!response.ok) {
+    throw new Error("Oops! Etwas ist schiefgelaufen.");
+  }
+  return response.json();
+}).
+then((data) => {
+  quizData = data;
+}).
+catch((error) => {
+  console.error("Fehler beim Laden der Daten:", error);
+});
+
+
+
 
 for(let element of categoryButtons){
-    console.log(element);
+    
     element.addEventListener("click",function(event){
         category(event);
     });
@@ -16,6 +32,9 @@ for(let element of categoryButtons){
 function category(event){
     console.log(event.target.id);
     switch(event.target.id){
-        case "SELECT-CSS": console.log("test");
+        case "SELECT-CSS": 
+            console.log(console.log(quizData));
+
+            break;
     }
 }
