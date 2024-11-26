@@ -10,8 +10,8 @@
 </head>
 <body>
   <!-- Quiz menu start -->
-   <head>
-    <div class="quiz title"></div>
+   <header>
+    <div class="quiz-title"><img src="assets/images/icon-accessibility.svg"></div>
     <div class="color-mode">
     <img src="assets/images/icon-sun-dark.svg">
     <label class="switch">
@@ -20,16 +20,16 @@
     </label>
     <img src="assets/images/icon-moon-dark.svg">
     </div>
-   </head>
+   </header>
    <main>
-  <section class="quiz-menu" id="main-menu">
+  <section class="quiz-menu notactive" id="main-menu">
     <div class="text heading-L-Regular">
     
   <div>Welcome to the <br><a class="heading-L-Bold">Frontend Quiz!</a></div>
 
   <div class="body-S gray" >Pick a subject to get started.</div>
     </div>
-    <div class="buttons" id="categoryButtons">
+    <div class="buttons " id="categoryButtons">
   <button id="SELECT-HTML" class="categoryButton"><img class="html" src="assets/images/icon-html.svg">HTML</button>
   <button id="SELECT-CSS" class="categoryButton"><img class="css" src="assets/images/icon-css.svg">CSS</button>
   <button id="SELECT-JS" class="categoryButton"><img class="javascript" src="assets/images/icon-js.svg">JavaScript</button>
@@ -39,15 +39,25 @@
   <!-- Quiz menu end -->
 
   <!-- Quiz question start -->
-  <section class="quiz notactive" id="quiz-menu">
-  Question <!-- number --> of 10
+  <section class="quiz quiz-menu" id="quiz-menu">
+    <div class="text">
+    <div class="body-S gray">
+  Question <a id="questionNumber">1</a> of 10
+</div>
+<div class="heading-M"> 
+Questio dies das ananass.ijsijdidjsidjsidjsid jsidjisjsijdisjdisjdisd
+</div>
+<div class="progress-bar" id="progressBar">
+</div>
+    </div>
+  <div class="buttons">
+  <button class="answer heading-S"><a class="answer-number">A</a>Test antword</button>
+  <button class="answer heading-S"><a class="answer-number">B</a></button>
+  <button class="answer heading-S"><a class="answer-number">C</a></button>
+  <button class="answer heading-S"><a class="answer-number">D</a></button>
 
-  <button class="answer">A</button>
-  <button class="answer">B</button>
-  <button class="answer">C</button>
-  <button class="answer">D</button>
-
-  <button>Submit answer</button>
+  <button type="submit">Submit answer</button>
+  </div>
   </section>
   <!-- Quiz question end -->
 

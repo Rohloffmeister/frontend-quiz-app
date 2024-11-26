@@ -37,8 +37,9 @@ body{
     width: 70%;
     
 }
-head{
+header{
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     
@@ -215,3 +216,13 @@ section{
     border-radius: 10px;
 }
 
+.answer-number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 80%;
+    aspect-ratio: 1/1;
+    background-color: #F4F6FA;
+    color: #626C7F;
+}
