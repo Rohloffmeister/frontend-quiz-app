@@ -11,7 +11,7 @@
 <body>
   <!-- Quiz menu start -->
    <header>
-    <div class="quiz-title"><img src="assets/images/icon-accessibility.svg"></div>
+    <div class="quiz-title "><img class="notactive" id="header-img" src="assets/images/icon-accessibility.svg"></div>
     <div class="color-mode">
     <img src="assets/images/icon-sun-dark.svg">
     <label class="switch">
@@ -22,7 +22,7 @@
     </div>
    </header>
    <main>
-  <section class="quiz-menu notactive" id="main-menu">
+  <section class="quiz-menu " id="main-menu">
     <div class="text heading-L-Regular">
     
   <div>Welcome to the <br><a class="heading-L-Bold">Frontend Quiz!</a></div>
@@ -39,24 +39,24 @@
   <!-- Quiz menu end -->
 
   <!-- Quiz question start -->
-  <section class="quiz quiz-menu" id="quiz-menu">
+  <section class="quiz quiz-menu notactive" id="quiz-menu">
     <div class="text">
     <div class="body-S gray">
   Question <a id="questionNumber">1</a> of 10
 </div>
-<div class="heading-M"> 
+<div class="heading-M" id="quiz-question"> 
 Questio dies das ananass.ijsijdidjsidjsidjsid jsidjisjsijdisjdisjdisd
 </div>
 <div class="progress-bar" id="progressBar">
 </div>
     </div>
-  <div class="buttons">
-  <button class="answer heading-S"><a class="answer-number">A</a>Test antword</button>
-  <button class="answer heading-S"><a class="answer-number">B</a></button>
-  <button class="answer heading-S"><a class="answer-number">C</a></button>
-  <button class="answer heading-S"><a class="answer-number">D</a></button>
+  <div class="buttons" id="answerButtons">
+  <button id="A" class="answer heading-S selected"><a class="answer-number">A</a><p>Test antword</p></button>
+  <button id="B"class="answer heading-S "><a class="answer-number">B</a></button>
+  <button id="C"class="answer heading-S"><a class="answer-number">C</a></button>
+  <button id="D"class="answer heading-S"><a class="answer-number">D</a></button>
 
-  <button type="submit">Submit answer</button>
+  <button class="submit heading-S" type="submit"><p>Submit answer</p></button>
   </div>
   </section>
   <!-- Quiz question end -->

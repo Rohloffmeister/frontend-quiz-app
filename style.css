@@ -226,3 +226,21 @@ section{
     background-color: #F4F6FA;
     color: #626C7F;
 }
+ .buttons .selected .correct{
+    border: solid 2px #26D782;
+}
+.butttons .selected .wrong{
+    border: solid 2px #EE5454;
+}
+.buttons .selected{
+    border: solid 2px #A729F5;
+}
+.buttons .selected .answer-number{
+    background-color: #26D782;
+    color: white;
+}
+
+.quiz-title img{
+    padding: 5px;
+    border-radius: 10px;
+}
