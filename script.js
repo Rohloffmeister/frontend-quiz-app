@@ -1,9 +1,6 @@
-const categoryButtons = document
-  .getElementById("categoryButtons")
-  .getElementsByClassName("answer");
-const answerButtons = document
-  .getElementById("answerButtons")
-  .getElementsByTagName("button");
+
+const categoryButtons = document.getElementById("categoryButtons").getElementsByClassName("categoryButton");
+const answerButtons = document.getElementById("answerButtons").getElementsByClassName("answer");
 const mainMenu = document.getElementById("main-menu");
 const quizMenu = document.getElementById("quiz-menu");
 const quizQuestion = document.getElementById("quiz-question");
@@ -12,6 +9,7 @@ let json = null;
 let currentQuizData = null;
 let quizLength = null;
 let currentQuestionNumber = null;
+let selectedAnswer = null;
 console.log("test");
 fetch("./data.json")
   .then((response) => {
@@ -30,17 +28,22 @@ fetch("./data.json")
 
 
 for (let element of categoryButtons) {
+  
   element.addEventListener("click", function (event) {
     category(event);
   });
 }
 for (let element of answerButtons) {
+  
   element.addEventListener("click", function (event) {
-    answer(event);
+    changeAnswer(event);
   });
 }
 
+
+
 function category(event) {
+  
   console.log(event.target.id);
   switch (event.target.id) {
     case "SELECT-HTML":
@@ -88,4 +91,11 @@ function preloadQuiz(title) {
 }
 
 function loadQuiz(data, questionNumber) {}
-function answer(event) {}
+function changeAnswer(event) {
+ 
+  for (let element of answerButtons){
+    element.classList.remove("selected");
+  }
+  event.target.classList.add("selected");
+  selectedAnswer = event.target.id;
+}
