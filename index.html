@@ -44,9 +44,10 @@
     <div class="body-S gray">
   Question <a id="questionNumber">1</a> of 10
 </div>
-<div class="heading-M" id="quiz-question"> 
+<div class="heading-M quiz-question" id="quiz-question"> 
 </div>
-<div class="progress-bar" id="progressBar">
+<div class="progress-bar-container">
+  <div class="progress-bar" id="progressBar"></div>
 </div>
     </div>
   <div class="buttons" id="answerButtons">
@@ -55,13 +56,18 @@
   <button id="C"class="answer hover heading-S"><a class="answer-number">C</a><p class="body-M answer-options"></p><img src=""/></button>
   <button id="D"class="answer hover heading-S"><a class="answer-number">D</a><p class="body-M answer-options"></p><img src=""/></button>
 
-  <button class="submit hover body-M" id="submit" >Submit Answer</button>
+  <button class="submit  body-M" id="submit" >Submit Answer</button>
+  <div class="no-answer-error notactive" id="noAnswerError">
+    <img src="assets/images/icon-error.svg"/>
+    <p class="body-M">Please select an answer</p>
+
+  </div>
   </div>
   </section>
   <!-- Quiz question end -->
 
   <!-- Quiz completed start -->
-  <section class="quiz-results notactive">
+  <section id="quizResults" class="quiz-results notactive">
   Quiz completed
   You scored...
 

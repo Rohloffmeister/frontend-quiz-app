@@ -114,6 +114,7 @@ input:checked + .slider:before {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 100%;
   gap: 20px;
 }
 
@@ -173,14 +174,12 @@ section {
   flex-direction: column;
   justify-content: flex-start;
   gap: 20px;
-
   height: 100%;
   width: 40%;
 }
 
 .buttons button {
   border: none;
-  background-color: white;
   height: 10%;
   width: 100%;
   border-radius: 10px;
@@ -191,9 +190,11 @@ section {
 }
 .buttons .hover:hover {
   background-color: rgb(250, 250, 250);
-  border: solid 2px #a729f5;
+  
 }
-.buttons button:hover {
+.buttons button:not(.selected):hover > .answer-number {
+  background-color: #F6E7FF;
+
 }
 .html {
   background-color: rgba(255, 166, 0, 0.1);
@@ -244,8 +245,48 @@ section {
 .answer img {
   margin-left: auto;
 }
+.progress-bar-container{
+
+  
+  width: 75%;
+  height: 8px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: left;
+  padding: 2px;
+}
+.progress-bar{
+  background-color: #a729f5;
+  height: 8px;
+  border-radius: 5px;
+}
+
+.quiz-question{
+  min-height: 20$;
+}
 
 .quiz-title img {
   padding: 5px;
   border-radius: 10px;
+}
+.buttons button{
+  background-color: white;
+}
+.buttons .submit{
+  display: flex;
+  justify-content: center;
+  background-color: #A729F5 ;
+  color: white;
+}
+.buttons .submit:hover{
+background-color: #ca7cfa ;
+}
+
+.no-answer-error{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #ee5454;
 }

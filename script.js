@@ -11,6 +11,9 @@ const quizQuestion = document.getElementById("quiz-question");
 const headerImg = document.getElementById("header-img");
 const questionNumber = document.getElementById("questionNumber");
 const answerOptionsText = document.getElementsByClassName("answer-options");
+const quizResults = document.getElementById("quizResults");
+const progressBar = document.getElementById("progressBar");
+const noAnswerError = document.getElementById("noAnswerError");
 let json = null;
 let currentQuizData = null;
 let correctAnswerButton = null;
@@ -18,6 +21,7 @@ let quizLength = null;
 let currentQuestionNumber = 1;
 let selectedAnswerButton = null;
 let correctAnswerCount = 0;
+
 
 fetch("./data.json")
   .then((response) => {
@@ -97,7 +101,10 @@ function preloadQuiz(category) {
 }
 
 function loadQuestion() {
- 
+  progress = currentQuestionNumber/quizLength*100;
+
+  progressBar.style.width = progress.toString().concat("%");
+  console.log(progress.toString().concat("%"));
   submitButton.textContent = "Submit Answer";
   questionNumber.textContent = currentQuestionNumber;
   quizQuestion.textContent =
@@ -118,7 +125,7 @@ function loadQuestion() {
 }
 function changeAnswer(event) {
   selectedAnswerButton = event.currentTarget;
-
+  console.log(selectedAnswerButton);
   for (let element of answerButtons) {
     element.classList.remove("selected");
   }
@@ -126,10 +133,12 @@ function changeAnswer(event) {
 }
 
 function submitAnswer() {
-  if (selectedAnswerButton.querySelector("p").textContent == "") {
+  if (selectedAnswerButton == null) {
+    noAnswerError.classList.remove("notactive");
     return;
   }
   if (submitButton.textContent == "Submit Answer") {
+    noAnswerError.classList.add("notactive");
     for (x of answerButtons) {
       x.classList.remove("hover");
     }
@@ -171,5 +180,7 @@ function submitAnswer() {
 }
 
 function loadResults() {
+  quizMenu.classList.add("notactive");
+  quizResults.classList.remove("notactive");
   alert(correctAnswerCount);
 }
