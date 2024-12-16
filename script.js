@@ -8,12 +8,16 @@ const submitButton = document.getElementById("submit");
 const mainMenu = document.getElementById("main-menu");
 const quizMenu = document.getElementById("quiz-menu");
 const quizQuestion = document.getElementById("quiz-question");
-const headerImg = document.getElementById("header-img");
+const categoryImg = document.getElementsByClassName("category-img");
 const questionNumber = document.getElementById("questionNumber");
 const answerOptionsText = document.getElementsByClassName("answer-options");
 const quizResults = document.getElementById("quizResults");
 const progressBar = document.getElementById("progressBar");
 const noAnswerError = document.getElementById("noAnswerError");
+const categoryTitles = document.getElementsByClassName("categoryTitle");
+const resultCorrect = document.getElementById("resultCorrect");
+const resultMax = document.getElementById("resultMax");
+const replayButton = document.getElementById("replay");
 let json = null;
 let currentQuizData = null;
 let correctAnswerButton = null;
@@ -21,7 +25,6 @@ let quizLength = null;
 let currentQuestionNumber = 1;
 let selectedAnswerButton = null;
 let correctAnswerCount = 0;
-
 
 fetch("./data.json")
   .then((response) => {
@@ -49,7 +52,9 @@ for (let element of answerButtons) {
     }
   });
 }
-
+replayButton.addEventListener("click", function () {
+  restart();
+});
 submitButton.addEventListener("click", function () {
   submitAnswer();
 });
@@ -58,31 +63,67 @@ function category(event) {
   switch (event.target.id) {
     case "SELECT-HTML":
       preloadQuiz("HTML");
-      headerImg.className = "";
-      headerImg.classList.add("html");
+      for (img of categoryImg) {
+        img.classList.remove(
+          "html",
+          "css",
+          "javascript",
+          "accessibility",
+          "notactive"
+        );
+        img.classList.add("html");
+      }
 
       break;
 
     case "SELECT-CSS":
       preloadQuiz("CSS");
-      headerImg.className = "";
-      headerImg.classList.add("css");
+      for (img of categoryImg) {
+        img.classList.remove(
+          "html",
+          "css",
+          "javascript",
+          "accessibility",
+          "notactive"
+        );
+        img.classList.add("css");
+      }
 
       break;
     case "SELECT-JS":
       preloadQuiz("JavaScript");
 
-      headerImg.className = "";
-      headerImg.classList.add("javascript");
+      for (img of categoryImg) {
+        img.classList.remove(
+          "html",
+          "css",
+          "javascript",
+          "accessibility",
+          "notactive"
+        );
+        img.classList.add("javascript");
+      }
 
       break;
     case "SELECT-ACCESSIBILITY":
       preloadQuiz("Accessibility");
 
-      headerImg.className = "";
-      headerImg.classList.add("accessibility");
+      for (img of categoryImg) {
+        img.classList.remove(
+          "html",
+          "css",
+          "javascript",
+          "accessibility",
+          "notactive"
+        );
+        img.classList.add("accessibility");
+      }
 
       break;
+  }
+  for (x of categoryTitles) {
+    
+    x.textContent = currentQuizData["title"];
   }
 }
 
@@ -92,7 +133,10 @@ function preloadQuiz(category) {
       currentQuizData = json["quizzes"][key];
     }
   }
-  headerImg.src = currentQuizData["icon"];
+  for (img of categoryImg) {
+    img.src = currentQuizData["icon"];
+  }
+
   quizLength = currentQuizData["questions"].length;
 
   mainMenu.classList.toggle("notactive");
@@ -101,7 +145,7 @@ function preloadQuiz(category) {
 }
 
 function loadQuestion() {
-  progress = currentQuestionNumber/quizLength*100;
+  progress = (currentQuestionNumber / quizLength) * 100;
 
   progressBar.style.width = progress.toString().concat("%");
   console.log(progress.toString().concat("%"));
@@ -114,14 +158,15 @@ function loadQuestion() {
   for (let x of answerButtons) {
     x.querySelector("p").textContent =
       currentQuizData["questions"][currentQuestionNumber - 1]["options"][itt];
-    
 
-    if( x.querySelector("p").textContent == currentQuizData["questions"][currentQuestionNumber - 1]["answer"]){
-     correctAnswerButton = x;
+    if (
+      x.querySelector("p").textContent ==
+      currentQuizData["questions"][currentQuestionNumber - 1]["answer"]
+    ) {
+      correctAnswerButton = x;
     }
-      itt += 1;
+    itt += 1;
   }
-  
 }
 function changeAnswer(event) {
   selectedAnswerButton = event.currentTarget;
@@ -153,7 +198,8 @@ function submitAnswer() {
         "./assets/images/icon-correct.svg";
     } else {
       selectedAnswerButton.classList.add("incorrect");
-      correctAnswerButton.querySelector("img").src = "./assets/images/icon-correct.svg";
+      correctAnswerButton.querySelector("img").src =
+        "./assets/images/icon-correct.svg";
       selectedAnswerButton.querySelector("img").src =
         "./assets/images/icon-incorrect.svg";
     }
@@ -180,7 +226,22 @@ function submitAnswer() {
 }
 
 function loadResults() {
+  resultMax.textContent = quizLength;
+  resultCorrect.textContent = correctAnswerCount;
   quizMenu.classList.add("notactive");
   quizResults.classList.remove("notactive");
-  alert(correctAnswerCount);
+}
+
+function restart() {
+  quizResults.classList.add("notactive");
+  mainMenu.classList.remove("notactive");
+  selectedAnswerButton = null;
+  correctAnswerCount = 0;
+  currentQuestionNumber = 1;
+  for (img of categoryImg) {
+    img.src = "";
+  }
+  for (x of categoryTitles) {
+    x.textContent = "";
+  }
 }
