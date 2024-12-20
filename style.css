@@ -365,13 +365,14 @@ background-color: #3B4D66;
 }
 .results-count-title img {
   border-radius: 10px;
+  margin: 4%;
 }
 
 .results-count-title {
   justify-content: center;
   display: flex;
   gap: 20px;
-  height: 10%;
+  height: 15%;
   flex-direction: row;
 }
 
