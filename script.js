@@ -18,6 +18,11 @@ const categoryTitles = document.getElementsByClassName("categoryTitle");
 const resultCorrect = document.getElementById("resultCorrect");
 const resultMax = document.getElementById("resultMax");
 const replayButton = document.getElementById("replay");
+const nightModeCheckBox = document.getElementById("nightmodecheckbox");
+const body = document.getElementsByTagName("body");
+const moonSVG = document.getElementById("moon-svg");
+const sunSVG = document.getElementById("sun-svg");
+
 let json = null;
 let currentQuizData = null;
 let correctAnswerButton = null;
@@ -25,6 +30,7 @@ let quizLength = null;
 let currentQuestionNumber = 1;
 let selectedAnswerButton = null;
 let correctAnswerCount = 0;
+let nightModeState = false;
 
 fetch("./data.json")
   .then((response) => {
@@ -58,6 +64,9 @@ replayButton.addEventListener("click", function () {
 submitButton.addEventListener("click", function () {
   submitAnswer();
 });
+nightModeCheckBox.addEventListener("click", function(){
+  changeColorMode();
+})
 
 function category(event) {
   switch (event.target.id) {
@@ -240,8 +249,29 @@ function restart() {
   currentQuestionNumber = 1;
   for (img of categoryImg) {
     img.src = "";
+    img.classList.remove(
+      "html",
+      "css",
+      "javascript",
+      "accessibility",
+    );
+    
   }
   for (x of categoryTitles) {
     x.textContent = "";
   }
+}
+
+function changeColorMode(){
+body[0].classList.toggle("dark-mode")
+if(body[0].classList.contains("dark-mode")){
+  sunSVG.src = "assets/images/icon-sun-light.svg";
+  moonSVG.src= "assets/images/icon-moon-light.svg";
+}
+else{
+  sunSVG.src = "assets/images/icon-sun-dark.svg";
+  moonSVG.src= "assets/images/icon-moon-dark.svg";
+}
+
+
 }
